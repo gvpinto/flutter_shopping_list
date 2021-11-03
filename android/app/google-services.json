@@ -1,0 +1,46 @@
+{
+  "project_info": {
+    "project_number": "398891590803",
+    "project_id": "flutter-ps-shopping",
+    "storage_bucket": "flutter-ps-shopping.appspot.com"
+  },
+  "client": [
+    {
+      "client_info": {
+        "mobilesdk_app_id": "1:398891590803:android:368ef8b1500853dbb29966",
+        "android_client_info": {
+          "package_name": "com.piercingstripes.flutter_shopping"
+        }
+      },
+      "oauth_client": [
+        {
+          "client_id": "398891590803-l42uu83mj92e6g61s90pajvagja7eack.apps.googleusercontent.com",
+          "client_type": 3
+        }
+      ],
+      "api_key": [
+        {
+          "current_key": "AIzaSyDtdzAZ6QPWBA-8u12kPh9E-tX5f321UXs"
+        }
+      ],
+      "services": {
+        "appinvite_service": {
+          "other_platform_oauth_client": [
+            {
+              "client_id": "398891590803-l42uu83mj92e6g61s90pajvagja7eack.apps.googleusercontent.com",
+              "client_type": 3
+            },
+            {
+              "client_id": "398891590803-6b95r8v9nisvvssk5s60csd7rubdj2g7.apps.googleusercontent.com",
+              "client_type": 2,
+              "ios_info": {
+                "bundle_id": "com.piercingstripes.flutter-shopping"
+              }
+            }
+          ]
+        }
+      }
+    }
+  ],
+  "configuration_version": "1"
+}
