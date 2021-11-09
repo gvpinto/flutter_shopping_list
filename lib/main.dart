@@ -1,6 +1,7 @@
-import 'package:cloud_firestore/cloud_firestore.dart';
 import 'package:firebase_core/firebase_core.dart';
 import 'package:flutter/material.dart';
+import 'package:flutter_hooks/flutter_hooks.dart';
+import 'package:flutter_shopping_list/controllers/auth_controller.dart';
 import 'package:hooks_riverpod/hooks_riverpod.dart';
 
 Future<void> main() async {
@@ -16,41 +17,31 @@ class MyApp extends StatelessWidget {
   @override
   Widget build(BuildContext context) {
     return MaterialApp(
-      title: 'Flutter Demo',
+      title: 'Flutter Firebase Riverpod',
       theme: ThemeData(
         primarySwatch: Colors.blue,
       ),
-      home: Scaffold(
-        appBar: AppBar(
-          title: const Text('Firebase'),
-        ),
-        floatingActionButton: FloatingActionButton(
-          onPressed: () => FirebaseFirestore.instance
-              .collection('testing')
-              .add({'timestamp': Timestamp.fromDate(DateTime.now())}),
-          child: const Icon(Icons.add),
-        ),
-        body: StreamBuilder<QuerySnapshot>(
-            stream:
-                FirebaseFirestore.instance.collection('testing').snapshots(),
-            builder:
-                (BuildContext context, AsyncSnapshot<QuerySnapshot> snapshot) {
-              if (!snapshot.hasData) return const SizedBox.shrink();
-              if (snapshot.connectionState == ConnectionState.waiting) {
-                return const Text("Loading");
-              }
-              return ListView(
-                children: snapshot.data!.docs.map((DocumentSnapshot document) {
-                  Map<String, dynamic> data =
-                      document.data()! as Map<String, dynamic>;
-                  return ListTile(
-                    title: Text(
-                        (data['timestamp'] as Timestamp).toDate().toString()),
-                  );
-                }).toList(),
-              );
-            }),
-      ),
+      home: const HomeScreen(),
+    );
+  }
+}
+
+class HomeScreen extends HookWidget {
+  const HomeScreen({Key? key}) : super(key: key);
+
+  @override
+  Widget build(BuildContext context) {
+    final authControllerState = useProvider(authControllerProvider);
+    return Scaffold(
+      appBar: AppBar(
+          title: const Text('Shopping List'),
+          leading: authControllerState != null
+              ? IconButton(
+                  onPressed: () =>
+                      context.read(authControllerProvider.notifier).signOut(),
+                  icon: const Icon(Icons.logout),
+                )
+              : null),
     );
   }
 }
