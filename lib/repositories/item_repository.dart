@@ -13,7 +13,7 @@ abstract class BaseItemRespository {
 }
 
 class ItemRepository implements BaseItemRespository {
-  Reader _read;
+  final Reader _read;
   const ItemRepository(this._read);
 
   @override

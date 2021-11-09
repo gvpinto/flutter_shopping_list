@@ -14,7 +14,7 @@ final authRepositoryProvider =
     Provider<AuthRespository>((ref) => AuthRespository(ref.read));
 
 class AuthRespository implements BaseAuthRespository {
-  Reader _read;
+  final Reader _read;
   AuthRespository(
     this._read,
   );
