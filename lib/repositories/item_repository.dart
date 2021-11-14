@@ -13,8 +13,8 @@ abstract class BaseItemRespository {
   Future<void> deleteItem({required String userId, required String itemId});
 }
 
-final itemRepositoryProvider = 
-Provider<ItemRepository>((ref) => ItemRepository(ref.read);
+final itemRepositoryProvider =
+    Provider<ItemRepository>((ref) => ItemRepository(ref.read));
 
 class ItemRepository implements BaseItemRespository {
   final Reader _read;
